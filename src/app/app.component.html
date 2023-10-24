@@ -1,0 +1,189 @@
+<mat-toolbar class="custom-toolbar" id="topAnchor">
+  <mat-icon>bug_report</mat-icon>
+  <span>Teste de Conhecimento Técnico</span>
+</mat-toolbar>
+
+<div class="content" role="main">
+  <button mat-raised-button color="accent" class="custom-button" (click)="importFile()">Importar JSON</button>
+</div>
+
+<div *ngIf="json">
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Quantos candidatos temos nessa lista em cada estado do Brasil?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-table [dataSource]="candidatoEstado.slice(
+               pageIndex * pageSize,
+               (pageIndex + 1) * pageSize
+               )">
+        <ng-container matColumnDef="estado">
+          <mat-header-cell class="custom-header" *matHeaderCellDef> ESTADO</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ row.estado }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="quantidade">
+          <mat-header-cell class="custom-header" *matHeaderCellDef> QUANTIDADE</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ row.quantidade}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="['estado', 'quantidade']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['estado', 'quantidade']"></mat-row>
+
+      </mat-table>
+      <mat-paginator [length]="candidatoEstado.length"
+                     [pageIndex]="pageIndex"
+                     [pageSize]="pageSize"
+                     (page)="updateDataSource($event)">
+      </mat-paginator>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          IMC médio em cada faixa de idade de dez em dez anos: 0 a 10; 11 a 20; 21 a 30, etc.
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-table [dataSource]="mediaImcIdade.slice(
+               pageIndex * pageSize,
+               (pageIndex + 1) * pageSize
+               )">
+        <ng-container matColumnDef="faixaEtariaIdade">
+          <mat-header-cell class="custom-header" *matHeaderCellDef> FAIXA ETARIA</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ row.faixaEtariaIdade }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="mediaIMC">
+          <mat-header-cell class="custom-header" *matHeaderCellDef> MEDIA IMC</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ row.mediaIMC}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="['faixaEtariaIdade', 'mediaIMC']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['faixaEtariaIdade', 'mediaIMC']"></mat-row>
+
+      </mat-table>
+      <mat-paginator [length]="mediaImcIdade.length"
+                     [pageIndex]="pageIndex"
+                     [pageSize]="pageSize"
+                     (page)="updateDataSource($event)">
+      </mat-paginator>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Qual o percentual de obesos entre os homens e entre as mulheres?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-table [dataSource]="percentualObesos.slice(
+               pageIndex * pageSize,
+               (pageIndex + 1) * pageSize
+               )">
+        <ng-container matColumnDef="sexo">
+          <mat-header-cell class="custom-header" *matHeaderCellDef> GÊNERO</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ row.sexo }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="percentualObesos">
+          <mat-header-cell class="custom-header" *matHeaderCellDef> PERCENTUAL DE OBESOS</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ row.percentualObesos}} %</mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="['sexo', 'percentualObesos']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['sexo', 'percentualObesos']"></mat-row>
+
+      </mat-table>
+      <mat-paginator [length]="percentualObesos.length"
+                     [pageIndex]="pageIndex"
+                     [pageSize]="pageSize"
+                     (page)="updateDataSource($event)">
+      </mat-paginator>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Qual a média de idade para cada tipo sanguíneo?
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-table [dataSource]="mediaPorIdade.slice(
+               pageIndex * pageSize,
+               (pageIndex + 1) * pageSize
+               )">
+        <ng-container matColumnDef="tipoSanguineo">
+          <mat-header-cell class="custom-header" *matHeaderCellDef> TIPOS SANGUINÉOS</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ row.tipoSanguineo }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="mediaPorIdade">
+          <mat-header-cell class="custom-header" *matHeaderCellDef> MÉDIA POR IDADE</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ row.mediaPorIdade}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="['tipoSanguineo', 'mediaPorIdade']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['tipoSanguineo', 'mediaPorIdade']"></mat-row>
+
+      </mat-table>
+      <mat-paginator [length]="mediaPorIdade.length"
+                     [pageIndex]="pageIndex"
+                     [pageSize]="pageSize"
+                     (page)="updateDataSource($event)">
+      </mat-paginator>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          A quantidade de possíveis doadores para cada tipo sanguíneo receptor.
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-table [dataSource]="qtdDoadores.slice(
+               pageIndex * pageSize,
+               (pageIndex + 1) * pageSize
+               )">
+        <ng-container matColumnDef="tipoSanguineo">
+          <mat-header-cell class="custom-header" *matHeaderCellDef> TIPOS SANGUINÉOS</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ row.tipoSanguineo }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="qtdPessoasDoadoras">
+          <mat-header-cell class="custom-header" *matHeaderCellDef> QUANTIDADE DE DOADORES</mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{ row.qtdPessoasDoadoras}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="['tipoSanguineo', 'qtdPessoasDoadoras']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['tipoSanguineo', 'qtdPessoasDoadoras']"></mat-row>
+
+      </mat-table>
+      <mat-paginator [length]="qtdDoadores.length"
+                     [pageIndex]="pageIndex"
+                     [pageSize]="pageSize"
+                     (page)="updateDataSource($event)">
+      </mat-paginator>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+
+<a href="#top">
+<button class="floating-button" >
+    <mat-icon style="color: white">north</mat-icon>
+</button>
+</a>
+
+<router-outlet>
+</router-outlet>
