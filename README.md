@@ -1,27 +1,27 @@
-# TesteConhecimentoAngular
+# Teste Conhecimento Técnico Front-end
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.18.
+Uma agência de banco de sangue forneceu uma lista de candidatos a doadores e precisa de um sistema
+que processe esses dados para extrair algumas informações.
+Implemente um sistema web que receba um JSON com os dados e mostre os seguintes resultados:
 
-## Development server
+• Quantos candidatos temos nessa lista em cada estado do Brasil? <br />
+• IMC médio em cada faixa de idade de dez em dez anos: 0 a 10; 11 a 20; 21 a 30, etc. (IMC = peso /
+altura^2) <br />
+• Qual o percentual de obesos entre os homens e entre as mulheres? (É obeso quem tem IMC > 30) <br />
+• Qual a média de idade para cada tipo sanguíneo? <br />
+• A quantidade de possíveis doadores para cada tipo sanguíneo receptor
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+ATENÇÃO: Somente pessoas com idade de 16 a 69 anos e com peso acima de 50 Kg podem doar sangue
 
-## Code scaffolding
+| Tipo sanguíneo  | Pode doar para                   | Pode receber de                 |
+| --------------- | -------------------------------- | ------------------------------- | 
+| A+              | AB+ e A+                         | A+, A-, O+ e O                  |
+| A-              | A+, A-, AB+ e AB-                | A- e O                          |
+|B+               |B+ e AB+                          |B+, B-, O+ e O                   |
+|B-               |B+, B-, AB+ e AB-                 |B- e O                           |
+|AB+              |AB+                               |A+, B+, O+, AB+, A-, B-, O- e AB |
+|AB-              |AB+ e AB-                         |A-, B-, O- e AB                  |
+|O+               |A+, B+, O+ e AB+                  |O+ e O                           |
+|O-               |A+, B+, O+, AB+, A-, B-, O- e AB- |O-                               |
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
