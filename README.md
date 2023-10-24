@@ -24,4 +24,9 @@ ATENÇÃO: Somente pessoas com idade de 16 a 69 anos e com peso acima de 50 Kg p
 |O+               |A+, B+, O+ e AB+                  |O+ e O                           |
 |O-               |A+, B+, O+, AB+, A-, B-, O- e AB- |O-                               |
 
+## Instalação
+Após clonar o projeto usar npm install na pasta raiz
 
+## Requisitos
+node: 14.21.3 <br />
+npm: 6.14.18
