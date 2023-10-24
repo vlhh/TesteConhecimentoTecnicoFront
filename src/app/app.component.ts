@@ -61,8 +61,9 @@ export class AppComponent implements AfterViewInit {
 
         try {
           if (typeof fileContents === "string") {
-            this.json = JSON.parse(fileContents);
-            this.dataService.postJson(this.json).subscribe(r => {
+            const json = JSON.parse(fileContents);
+            this.dataService.postJson(json).subscribe(r => {
+              this.json = json;
               this._snackBar.open("JSON importado com sucesso", "fechar", {
                 duration: 5000, // A duração em milissegundos
               });
@@ -71,6 +72,11 @@ export class AppComponent implements AfterViewInit {
               this.percentualObesos = r.percentualObesosDTOS
               this.mediaPorIdade = r.dadosTipoSanguineoDTOS
               this.qtdDoadores = r.dadosTipoSanguineoDTOS
+            }, () => {
+              this.json = undefined
+              this._snackBar.open("Ocorreu um erro ao processar o JSON", "fechar", {
+                duration: 5000, // A duração em milissegundos
+              })
             })
           }
         } catch (error) {

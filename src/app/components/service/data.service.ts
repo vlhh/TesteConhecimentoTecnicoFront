@@ -3,12 +3,13 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {DadosRetornoModel} from "../model/dados-retorno.model";
 import {DadosJsonModel} from "../model/dados-json.model";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  private baseUrl = ' http://localhost:8080/api/dados'; // Substitua pelo URL do seu backend
+  private baseUrl = environment.GATEWAY + '/api/dados'; // Substitua pelo URL do seu backend
 
   constructor(private http: HttpClient) {
   }
